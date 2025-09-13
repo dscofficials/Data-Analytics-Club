@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Analytics Club</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Genie effect animation */
+    @keyframes genieIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.1) translateY(200px);
+        clip-path: ellipse(10% 10% at 50% 90%);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        clip-path: ellipse(150% 150% at 50% 50%);
+      }
+    }
+
+    @keyframes genieOut {
+      0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        clip-path: ellipse(150% 150% at 50% 50%);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.1) translateY(200px);
+        clip-path: ellipse(10% 10% at 50% 90%);
+      }
+    }
+    .cursor-circle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(0, 150, 255, 0.6);
+  border-radius: 50%;
+  pointer-events: none; /* So it doesn't block clicks */
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s ease;
+  z-index: 9999;
+}
+
+
+    .section {
+      display: none;
+      opacity: 0;
+      transform-origin: center bottom;
+      animation-duration: 0.6s;
+      animation-timing-function: ease-in-out;
+    }
+
+    .section.showing {
+      display: block;
+      animation-name: genieIn;
+    }
+
+    .section.hiding {
+      display: block;
+      animation-name: genieOut;
+    }
+
+    .section.active {
+      display: block;
+      opacity: 1;
+    }
+    .nav-logo{
+        height: 40px;
+        width: 40px;
+        margin-right: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-animation"></div>
+<div id="preloader">
+  <div class="preloader-content">
+    <img src="11zon_cropped.png" alt="Logo" class="logo">
+    <div class="dots">
+      <span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <nav>
+    <div class="nav-container">
+        <img src="11zon_cropped.png" alt="Club Logo" class="nav-logo">
+      <div class="logo"onclick="location.reload()" style="cursor:pointer;margin-bottom: -5px;">DAC</div>
+      <ul class="nav-links">
+        <li><a onclick="showSection('home')">Home</a></li>
+        <li><a onclick="showSection('about')">About</a></li>
+        <li><a onclick="showSection('activities')">Activities</a></li>
+        <!--<li><a onclick="showSection('gallery')">Gallery</a></li>-->
+        <!-- <li><a onclick="showSection('faq')">FAQ</a></li> -->
+        <li><a onclick="showSection('contact')">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- cursor tracking -->
+   <div class="cursor-circle"></div>
+  <!-- dashboard -->
+  <section id="home" class="section active">
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="final.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Data Analytics Club</h1>
+            <p>Join our community of students, researchers, and enthusiasts passionate about AI, Machine Learning, and Data Science</p>
+            <button class="cta-button" onclick="showSection('about')">Discover Our Mission</button>
+        </div>
+    </div>
+    
+    <div class="cards-grid">
+        <div class="card">
+            <div class="card-icon">🤖</div>
+            <h3>Artificial Intelligence</h3>
+            <p>Explore cutting-edge AI technologies and their real-world applications through hands-on projects and workshops.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">📊</div>
+            <h3>Data Analytics</h3>
+            <p>Learn to extract insights from complex datasets using modern tools and statistical methods.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🧠</div>
+            <h3>Machine Learning</h3>
+            <p>Master ML algorithms and techniques to build intelligent systems that learn from data.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">👥</div>
+            <h3>Community Learning</h3>
+            <p>Collaborate with peers, share knowledge, and grow together in a supportive environment.</p>
+        </div>
+    </div>
+</section>
+  <!-- about -->
+
+  <section id="about" class="section">
+        <h2>About Our Club</h2>
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <p style="font-size: 1.2rem; color: var(--text-gray); max-width: 800px; margin: 0 auto;">
+                St. Joseph's College of Engineering – Department of AI & Data Science. A vibrant, inclusive community empowering students to learn, innovate, and lead in the fields of AI, Machine Learning, and Data Science.
+            </p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h3>Our Mission</h3>
+                <p>To democratize data science education and create opportunities for students to engage with cutting-edge technologies while building practical skills for their careers.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🚀</div>
+                <h3>Our Vision</h3>
+                <p>To be the premier platform for data science learning and innovation, fostering the next generation of data scientists and AI experts.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">💡</div>
+                <h3>What You'll Learn</h3>
+                <p>Python, R, SQL, TensorFlow, PyTorch, Data Visualization, Statistical Analysis, Deep Learning, NLP, Computer Vision, and much more.</p>
+            </div>
+        </div>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <h3 style="text-align: center; margin: 4rem 0 2rem; font-size: 2rem; color: var(--accent-cyan);">Meet Our Team</h3>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-avatar"><img src="industrial expert.jpg" style="border-radius: 100%; height: 100px; width: 100px;"></div>
+                <h4>Eneeyan Nanmaran</h4>
+                <p style="color: var(--accent-cyan);">Industrial Expert</p>
+                <p>Corporate Trainer | SQL | Python | ML | Power BI | cracked 23+
+                offers in BI & Data Analytics</p>
+                <a href="https://www.linkedin.com/in/eneeyan-nanmaran-69a93514a/" class="card-link"><i class="fa-brands fa-square-linkedin" style="font-size: 25px;"></i></a>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar"><img src="hod1.png" style="height: 100px; width: 100px;"></div>
+                <h4>L. Sherly Annabel</h4>
+                <p style="color: var(--accent-cyan);">Head Of the Department</p>
+                <p>PhD in Machine Learning, 10+ years in AI research</p>
+                <a href="https://www.linkedin.com/in/l-sherly-annabel-011030213/" class="card-link"><i class="fa-brands fa-square-linkedin" style="font-size: 25px;"></i></a>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar">👨‍🏫</div>
+                <h4>Arunmozhi B</h4>
+                <p style="color: var(--accent-cyan);">Faculty Advisor</p>
+                <p>PhD in Machine Learning, 10+ years in AI research</p>
+                <a href="https://www.linkedin.com/in/l-sherly-annabel-011030213/" class="card-link"><i class="fa-brands fa-square-linkedin" style="font-size: 25px;"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities -->
+
+  <section id="activities" class="section">
+        <h2>Activities & Services</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">🏫</div>
+                <h3>Workshops</h3>
+                <p>Weekly hands-on workshops covering Python, R, machine learning algorithms, data visualization, and industry best practices.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">💻</div>
+                <h3>Coding Bootcamps</h3>
+                <p>Intensive weekend bootcamps focusing on specific technologies like TensorFlow, PyTorch, or data engineering tools.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Hackathons</h3>
+                <p>Regular hackathons where teams compete to solve real-world problems using data science and AI techniques.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎤</div>
+                <h3>Guest Lectures</h3>
+                <p>Industry experts and researchers share insights about cutting-edge developments and career opportunities.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <h3>Project Collaborations</h3>
+                <p>Work on real projects with local businesses, startups, and research institutions to gain practical experience.</p>
+            </div>
+            <div class="card">
+  <div class="card-icon">📰</div>
+  <h3>Weekly Newsletter</h3>
+  <p>Stay updated with the latest in AI, Data Science, and club activities—delivered fresh every Friday to your inbox.</p>
+  <a href="https://www.linkedin.com/in/data-analytical-club-218990383/" class="card-link"><i class="fa-brands fa-square-linkedin" style="font-size: 25px;"></i></a>
+
+</div>
+
+        </div>
+    </section>
+  <!-- gallery -->
+
+  <section id="gallery" class="section">
+        <h2>Gallery</h2>
+        <p style="text-align: center; color: var(--text-gray); margin-bottom: 3rem;">
+            Moments from our workshops, hackathons, and community events
+        </p>
+        <!-- <div class="gallery-grid">
+            <div class="gallery-item">📸</div>
+            <div class="gallery-item">🏆</div>
+            <div class="gallery-item">💻</div>
+            <div class="gallery-item">👥</div>
+            <div class="gallery-item">🎯</div>
+            <div class="gallery-item">🚀</div>
+            <div class="gallery-item">🔬</div>
+            <div class="gallery-item">📊</div>
+        </div> -->
+    </section>
+
+  <!-- FAQ Section -->
+    <section id="faq" class="section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>How do I join the Data Science Club?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Simply attend one of our weekly meetings or contact us through the form below. No prior experience required - we welcome beginners!</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>What are the prerequisites for joining?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>No specific prerequisites! We welcome students from all majors and experience levels. Basic programming knowledge is helpful but not required.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Are there any membership fees?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Membership is completely free! We occasionally charge small fees for special workshops or events to cover materials and refreshments.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>When and where do you meet?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>We meet every Tuesday at 6 PM in the Computer Science building, Room 204. Check our social media for updates on special events.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Can I participate remotely?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Yes! We offer hybrid participation for most events and maintain active online communities where members can collaborate and share resources.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2>Get in Touch</h2>
+        <div class="contact-form">
+            <form action="https://formspree.io/f/mrbadrkp" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="year">Academic Year</label>
+                    <input type="text" id="year" name="year" placeholder="e.g., Sophomore, Graduate Student">
+                </div>
+                <div class="form-group">
+                    <label for="interests">Areas of Interest</label>
+                    <textarea id="interests" name="interests" rows="4" placeholder="Tell us about your interests in AI, ML, Data Science..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Any questions or additional information..."></textarea>
+                </div>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/data-analytical-club-218990383/" class="social-link" title="LinkedIn"><i class="fa-brands fa-square-linkedin"></i></a>
+            <a href="https://www.instagram.com/dataanalytical7/" class="social-link" title="Instagram"><i class="fa-brands fa-square-instagram"></i></a>
+            <a href="https://github.com/dscofficials" class="social-link" title="GitHub"><i class="fa-brands fa-square-github"></i></a>
+            <a href="https://discord.gg/F5Gsrh5XQx" class="social-link" title="Discord"><i class="fa-brands fa-discord"></i></a>
+        </div>
+    </section>
+
+    <!-- <footer>
+        <p>&copy; 2025 Data Science Club. Empowering the future with data.</p>
+    </footer> -->
+
+  <script>
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('.section');
+
+      sections.forEach(section => {
+        if (section.classList.contains('active')) {
+          section.classList.remove('active');
+          section.classList.add('hiding');
+          setTimeout(() => section.classList.remove('hiding'), 600);
+        }
+      });
+
+      const newSection = document.getElementById(sectionId);
+      newSection.classList.add('active', 'showing');
+      setTimeout(() => newSection.classList.remove('showing'), 600);
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    const circle = document.querySelector('.cursor-circle');
+
+document.addEventListener('mousemove', (e) => {
+  circle.style.left = `${e.clientX}px`;
+  circle.style.top = `${e.clientY}px`;
+});
+
+    function toggleFAQ(element) {
+        const answer = element.nextElementSibling;
+        const icon = element.querySelector("span:last-child");
+
+        // Toggle visibility
+        if (answer.style.display === "block") {
+            answer.style.display = "none";
+            icon.textContent = "+";
+        } else {
+            answer.style.display = "block";
+            icon.textContent = "−";
+        }
+    }
+
+    // Initialize answers as hidden
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".faq-answer").forEach(answer => {
+            answer.style.display = "none";
+        });
+    });
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("preloader").classList.add("hidden");
+  }, 2000); // 2 seconds
+});
+
+
+
+
+  </script>
+</body>
+</html>
